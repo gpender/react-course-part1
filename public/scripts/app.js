@@ -31,5 +31,28 @@ var template = React.createElement(
         )
     )
 );
+
+var mytemplate = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        'Guy Pender'
+    ),
+    React.createElement(
+        'p',
+        null,
+        'Age: 53'
+    ),
+    React.createElement(
+        'p',
+        null,
+        'Location: Angmering'
+    )
+);
+
 var appRoot = document.getElementById('app');
+var guyRoot = document.getElementById('guy');
 ReactDOM.render(template, appRoot);
+ReactDOM.render(mytemplate, guyRoot);

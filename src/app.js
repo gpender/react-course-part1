@@ -11,5 +11,16 @@ var template = (
     </ol>
 </div>
 );
+
+var mytemplate=(
+<div>
+    <h1>Guy Pender</h1>
+    <p>Age: 53</p>
+    <p>Location: Angmering</p>
+</div>
+);
+
 var appRoot = document.getElementById('app');
+var guyRoot = document.getElementById('guy');
 ReactDOM.render(template, appRoot);
+ReactDOM.render(mytemplate, guyRoot);
