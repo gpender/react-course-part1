@@ -31,24 +31,33 @@ var template = React.createElement(
         )
     )
 );
-
+var user = {
+    name: 'Guy Pender',
+    age: 54,
+    location: 'West Sussex'
+};
+var userName = 'Guy';
+var userAge = 54.5;
+var userLocation = 'Scilly';
 var mytemplate = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'Guy Pender'
+        user.name + '!'
     ),
     React.createElement(
         'p',
         null,
-        'Age: 53'
+        'Age: ',
+        user.age
     ),
     React.createElement(
         'p',
         null,
-        'Location: Angmering'
+        'Location: ',
+        user.location
     )
 );
 
