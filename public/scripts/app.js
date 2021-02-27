@@ -5,17 +5,18 @@ console.log('app.js is running watched');
 //JSX - Javascript XML
 var app = {
     title: 'React App',
-    subtitle: 'A React course'
+    subtitle: 'A React course',
+    options: ['one', 'two']
 };
 var template = React.createElement(
     'div',
     null,
-    React.createElement(
+    app.title && React.createElement(
         'h1',
         null,
         app.title
     ),
-    React.createElement(
+    app.subtitle && React.createElement(
         'h2',
         null,
         app.subtitle
@@ -24,6 +25,12 @@ var template = React.createElement(
         'p',
         null,
         'THis some info'
+    ),
+    app.options.length > 0 && React.createElement(
+        'p',
+        null,
+        'Here are your options ',
+        app.options
     ),
     React.createElement(
         'ol',
@@ -47,7 +54,7 @@ var template = React.createElement(
 );
 var user = {
     name: 'Guy Pender',
-    age: 54,
+    age: 114,
     location: 'West Sussex'
 };
 function getLocation(location) {
@@ -63,7 +70,7 @@ function getLocation(location) {
     }
 };
 var userName = 'Guy';
-var userAge = 54.5;
+var userAge = 4.5;
 var userLocation = 'Scilly';
 var mytemplate = React.createElement(
     'div',
@@ -73,17 +80,11 @@ var mytemplate = React.createElement(
         null,
         user.name ? user.name : 'anon' + '!'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         'p',
         null,
         'Age: ',
         user.age
-    ),
-    React.createElement(
-        'p',
-        null,
-        'Location: ',
-        getLocation(user.location)
     ),
     getLocation(user.location)
 );

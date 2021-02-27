@@ -3,13 +3,15 @@ console.log('app.js is running watched');
 //JSX - Javascript XML
 var app={
     title:'React App',
-    subtitle:'A React course'
+    subtitle:'A React course',
+    options:['one','two']
 }
 var template = (
 <div>
-    <h1>{app.title}</h1>
-    <h2>{app.subtitle}</h2>
+    {app.title && <h1>{app.title}</h1>}
+    {app.subtitle && <h2>{app.subtitle}</h2>}
     <p>THis some info</p>
+    {app.options.length > 0 && <p>Here are your options {app.options}</p>}
     <ol>
         <li>Item One</li>
         <li>Item Two</li>
@@ -19,7 +21,7 @@ var template = (
 );
 var user={
     name:'Guy Pender',
-    age:54,
+    age:114,
     location:'West Sussex'
 };
 function getLocation(location){
@@ -30,13 +32,12 @@ function getLocation(location){
     }
 };
 var userName = 'Guy';
-var userAge = 54.5;
+var userAge = 4.5;
 var userLocation = 'Scilly';
 var mytemplate=(
 <div>
     <h1>{user.name?user.name:'anon' +'!'}</h1>
-    <p>Age: {user.age}</p>
-    <p>Location: {getLocation(user.location)}</p>
+    {(user.age && user.age >= 18) &&  <p>Age: {user.age}</p>}
     {getLocation(user.location)}
 </div>
 );
