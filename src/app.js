@@ -34,7 +34,7 @@ var userAge = 54.5;
 var userLocation = 'Scilly';
 var mytemplate=(
 <div>
-    <h1>{user.name +'!'}</h1>
+    <h1>{user.name?user.name:'anon' +'!'}</h1>
     <p>Age: {user.age}</p>
     <p>Location: {getLocation(user.location)}</p>
     {getLocation(user.location)}

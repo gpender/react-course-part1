@@ -71,7 +71,7 @@ var mytemplate = React.createElement(
     React.createElement(
         'h1',
         null,
-        user.name + '!'
+        user.name ? user.name : 'anon' + '!'
     ),
     React.createElement(
         'p',
