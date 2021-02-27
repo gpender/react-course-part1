@@ -1,49 +1,119 @@
 'use strict';
 
-// arguments object - no longer bound with arrow functions
-// this keyword - no longer bound
+console.log('app.js is running watched');
 
-var add = function add(a, b) {
-    console.log(arguments);
-    return a + b;
+//JSX - Javascript XML
+var app = {
+    title: 'React App',
+    subtitle: 'A React course',
+    options: ['one', 'two']
 };
-var addArrow = function addArrow(a, b) {
-    //console.log(arguments);
-    return a + b;
-};
-console.log(add(7, 8));
-console.log(addArrow(7, 8));
-
+var template = React.createElement(
+    'div',
+    null,
+    app.title && React.createElement(
+        'h1',
+        null,
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        'h2',
+        null,
+        app.subtitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        'THis some info'
+    ),
+    app.options.length > 0 && React.createElement(
+        'p',
+        null,
+        'Here are your options ',
+        app.options
+    ),
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            'Item One'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item Two'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item Two'
+        )
+    )
+);
 var user = {
-    name: 'guy',
-    cities: ['scilly', 'pz', 'la'],
-    printPlacesLived: function printPlacesLived() {
-        var _this = this;
-
-        //const that =this;
-        //console.log(this.name);
-        //console.log(this.cities);
-        var cityMessages = this.cities.map(function (city) {
-            return _this.name + ' has lived in ' + city;
-        });
-        return cityMessages;
-        // this.cities.forEach((city) => {
-        //     console.log(this.name + ' has lived in ' + city);
-        // })
-    }
+    name: 'Guy Pender',
+    age: 114,
+    location: 'West Sussex'
 };
-console.log(user.printPlacesLived());
-
-var multiplier = {
-    numbers: [1, 6],
-    multiplyBy: 12,
-    multiply: function multiply() {
-        var _this2 = this;
-
-        return this.numbers.map(function (number) {
-            return number * _this2.multiplyBy;
-        });
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location
+        );
+    } else {
+        return undefined;
     }
 };
 
-console.log(multiplier.multiply());
+var count = 0;
+var addOne = function addOne() {
+    count++;
+    console.log('add one');
+    console.log(count);
+};
+var minusOne = function minusOne() {
+    count--;
+    console.log('minus one');
+    console.log(count);
+};
+var reset = function reset() {
+    count = 0;
+    console.log('reset');
+    console.log(count);
+};
+var mytemplate = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        'Count: ',
+        count
+    ),
+    React.createElement(
+        'button',
+        { onClick: addOne },
+        '+1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: minusOne },
+        '-1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: reset },
+        'reset'
+    )
+);
+console.log(mytemplate);
+
+var appRoot = document.getElementById('app');
+var guyRoot = document.getElementById('guy');
+ReactDOM.render(template, appRoot);
+ReactDOM.render(mytemplate, guyRoot);

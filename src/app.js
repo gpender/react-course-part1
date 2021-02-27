@@ -31,16 +31,33 @@ function getLocation(location){
         return undefined;
     }
 };
-const userName = 'Guy';
-const userAge = 4.5;
-const userLocation = 'Scilly';
+
+let count=0;
+const addOne = ()=>{
+    count++;
+    console.log('add one');
+    console.log(count);
+};
+const minusOne = ()=>{
+    count--;
+    console.log('minus one');
+    console.log(count);
+};
+const reset = ()=>{
+    count=0;
+    console.log('reset');
+    console.log(count);
+};
 const mytemplate=(
 <div>
-    <h1>{user.name?user.name:'anon' +'!'}</h1>
-    {(user.age && user.age >= 18) &&  <p>Age: {user.age}</p>}
-    {getLocation(user.location)}
+    <h1>Count: {count}</h1>
+    <button onClick={addOne}>+1</button>
+    <button onClick={minusOne}>-1</button>
+    <button onClick={reset}>reset</button>
 </div>
 );
+console.log(mytemplate);
+
 
 const appRoot = document.getElementById('app');
 const guyRoot = document.getElementById('guy');
