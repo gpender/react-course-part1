@@ -1,12 +1,12 @@
 console.log('app.js is running watched');
 
 //JSX - Javascript XML
-var app={
+const app={
     title:'React App',
     subtitle:'A React course',
     options:['one','two']
 }
-var template = (
+const template = (
 <div>
     {app.title && <h1>{app.title}</h1>}
     {app.subtitle && <h2>{app.subtitle}</h2>}
@@ -19,7 +19,7 @@ var template = (
     </ol>
 </div>
 );
-var user={
+const user={
     name:'Guy Pender',
     age:114,
     location:'West Sussex'
@@ -31,10 +31,10 @@ function getLocation(location){
         return undefined;
     }
 };
-var userName = 'Guy';
-var userAge = 4.5;
-var userLocation = 'Scilly';
-var mytemplate=(
+const userName = 'Guy';
+const userAge = 4.5;
+const userLocation = 'Scilly';
+const mytemplate=(
 <div>
     <h1>{user.name?user.name:'anon' +'!'}</h1>
     {(user.age && user.age >= 18) &&  <p>Age: {user.age}</p>}
@@ -42,7 +42,7 @@ var mytemplate=(
 </div>
 );
 
-var appRoot = document.getElementById('app');
-var guyRoot = document.getElementById('guy');
+const appRoot = document.getElementById('app');
+const guyRoot = document.getElementById('guy');
 ReactDOM.render(template, appRoot);
 ReactDOM.render(mytemplate, guyRoot);
