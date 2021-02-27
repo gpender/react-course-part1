@@ -3,13 +3,22 @@
 console.log('app.js is running watched');
 
 //JSX - Javascript XML
+var app = {
+    title: 'React App',
+    subtitle: 'A React course'
+};
 var template = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'This is JSX from app.js'
+        app.title
+    ),
+    React.createElement(
+        'h2',
+        null,
+        app.subtitle
     ),
     React.createElement(
         'p',
@@ -28,6 +37,11 @@ var template = React.createElement(
             'li',
             null,
             'Item Two'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item Two'
         )
     )
 );
@@ -35,6 +49,18 @@ var user = {
     name: 'Guy Pender',
     age: 54,
     location: 'West Sussex'
+};
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location
+        );
+    } else {
+        return undefined;
+    }
 };
 var userName = 'Guy';
 var userAge = 54.5;
@@ -57,8 +83,9 @@ var mytemplate = React.createElement(
         'p',
         null,
         'Location: ',
-        user.location
-    )
+        getLocation(user.location)
+    ),
+    getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');
