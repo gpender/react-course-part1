@@ -24,7 +24,7 @@ const onReset = () => {
 };
 
 const appRoot = document.getElementById('app');
-
+const numbers = [56,101,1000];
 const render = ()=>{
     const template = (
         <div>
@@ -32,10 +32,17 @@ const render = ()=>{
             {app.subtitle && <h2>{app.subtitle}</h2>}
             <p>{app.options.length > 0 ? 'Here are your options' : 'No Options'}</p>
             <p>{app.options.length}</p>
+            {
+ numbers.map((number)=>{
+     return <p key={number}>Number: {number*2}</p>;
+ })
+            }
             <ol>
-                <li>Item One</li>
-                <li>Item Two</li>
-                <li>Item Two</li>
+                {
+                    app.options.map((option)=>{
+                        return <li key={option}>Option: {option}</li>;
+                    })
+                }
             </ol>
             <button onClick={onReset}>Reset</button>
             <form  onSubmit={onFormSubmit}>

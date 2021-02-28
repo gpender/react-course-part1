@@ -25,7 +25,7 @@ var onReset = function onReset() {
 };
 
 var appRoot = document.getElementById('app');
-
+var numbers = [56, 101, 1000];
 var render = function render() {
     var template = React.createElement(
         'div',
@@ -50,24 +50,25 @@ var render = function render() {
             null,
             app.options.length
         ),
+        numbers.map(function (number) {
+            return React.createElement(
+                'p',
+                { key: number },
+                'Number: ',
+                number * 2
+            );
+        }),
         React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'Item One'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Item Two'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Item Two'
-            )
+            app.options.map(function (option) {
+                return React.createElement(
+                    'li',
+                    { key: option },
+                    'Option: ',
+                    option
+                );
+            })
         ),
         React.createElement(
             'button',
