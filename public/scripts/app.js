@@ -1,48 +1,38 @@
 'use strict';
 
-var visible = false;
-var onClick = function onClick() {
-    visible = !visible;
-    render();
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var render = function render() {
-    var template = React.createElement(
-        'div',
-        null,
-        React.createElement(
-            'h1',
-            null,
-            'Visibility Toggle'
-        ),
-        React.createElement(
-            'button',
-            { onClick: onClick },
-            visible ? 'Hide options' : 'Show Options'
-        ),
-        visible && React.createElement(
-            'ul',
-            null,
-            React.createElement(
-                'li',
-                null,
-                'One'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'One'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'One'
-            )
-        )
-    );
-    var divId = document.getElementById('app');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-    ReactDOM.render(template, divId);
-};
+var Person = function () {
+    function Person() {
+        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anonymous';
+        var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
-render();
+        _classCallCheck(this, Person);
+
+        this.name = name;
+        this.age = age;
+        console.log(name + '!');
+    }
+
+    _createClass(Person, [{
+        key: 'getGreeting',
+        value: function getGreeting() {
+            return 'Hello ' + this.name;
+        }
+    }, {
+        key: 'getDescription',
+        value: function getDescription() {
+            return this.name + ' is ' + this.age + ' years old';
+        }
+    }]);
+
+    return Person;
+}();
+
+var me = new Person('Guy Pender', 54);
+var other = new Person();
+
+console.log(me.getGreeting());
+console.log(me.getDescription());
