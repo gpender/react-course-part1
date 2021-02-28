@@ -37,29 +37,37 @@ const addOne = ()=>{
     count++;
     console.log('add one');
     console.log(count);
+    rendercounterApp();
 };
 const minusOne = ()=>{
     count--;
     console.log('minus one');
     console.log(count);
+    rendercounterApp();
 };
 const reset = ()=>{
     count=0;
     console.log('reset');
     console.log(count);
+    rendercounterApp();
 };
-const mytemplate=(
-<div>
-    <h1>Count: {count}</h1>
-    <button onClick={addOne}>+1</button>
-    <button onClick={minusOne}>-1</button>
-    <button onClick={reset}>reset</button>
-</div>
-);
-console.log(mytemplate);
 
 
 const appRoot = document.getElementById('app');
 const guyRoot = document.getElementById('guy');
 ReactDOM.render(template, appRoot);
-ReactDOM.render(mytemplate, guyRoot);
+
+const rendercounterApp = ()=>{
+    const mytemplate=(
+        <div>
+            <h1>Count: {count}</h1>
+            <button onClick={addOne}>+1</button>
+            <button onClick={minusOne}>-1</button>
+            <button onClick={reset}>reset</button>
+        </div>
+        );
+        ReactDOM.render(mytemplate, guyRoot);
+
+};
+
+rendercounterApp();
