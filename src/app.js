@@ -1,10 +1,14 @@
 class IndecisionAPP extends React.Component{
-    render(){
+     render(){
+        const title="Indecision";
+        const subTitle="Put your life in the hands of a computer";
+        const options=["Thing 1","Thing2","Thing3"];
         return(
         <div>
-        <Header />
+        <Header title={title} subTitle={subTitle}/>
         <Action/>
-        <Options/>
+        <Option optionText={(new Date()).toLocaleTimeString()} />
+        <Options optionArray={options}/>
         <AddOption/>
         </div>
         );
@@ -13,11 +17,10 @@ class IndecisionAPP extends React.Component{
 
 class Header extends React.Component {
     render(){
-
         return (
             <div>
-                <h1>Indecision</h1>
-                <h2>Put your life in the hands of a computer</h2>
+                <h1>{this.props.title}</h1>
+                <h2>{this.props.subTitle}</h2>
             </div>
         )
     }
@@ -37,9 +40,9 @@ class Options extends React.Component {
         return (
             <div>
             <ul>
-            <Option/>
-            <Option/>
-            <Option/>
+                {this.props.optionArray.map((option)=>{
+                    return <Option key={option} optionText={option}/>;
+                })}
             </ul>
             </div>
         )
@@ -58,8 +61,10 @@ class AddOption extends React.Component{
 class Option extends React.Component{
     render(){
         return(
-        <li>Option</li>
-        );
+            <div>
+                <li style={{color:'red'}}>{this.props.optionText}</li>
+            </div>
+            );
     }
 }
 
@@ -73,4 +78,8 @@ class Option extends React.Component{
 // );
 
 //ReactDOM.render(jsx, document.getElementById('app'));
-ReactDOM.render(<IndecisionAPP/>, document.getElementById('app'));
+function render(){
+    ReactDOM.render(<IndecisionAPP/>, document.getElementById('app'));
+}
+render();
+setInterval(render,1000);
