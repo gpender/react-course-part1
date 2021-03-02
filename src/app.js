@@ -1,3 +1,13 @@
+const obj={
+    name:'guggy',
+    getName(){
+        return this.name;
+    }
+}
+//console.log(obj.getName());
+const getName = obj.getName.bind({name:'guythh'});
+console.log(getName());
+
 class IndecisionAPP extends React.Component{
      render(){
         const title="Indecision";
@@ -39,8 +49,12 @@ class Action extends React.Component{
     }
 }
 class Options extends React.Component {
+    constructor(props){
+        super(props);
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }   
     handleRemoveAll(){
-        alert('remove all');
+        console.log('remove all');
     }
     render(){
         return (
