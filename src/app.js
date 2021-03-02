@@ -14,13 +14,13 @@ class IndecisionAPP extends React.Component{
         const subTitle="Put your life in the hands of a computer";
         const options=["Thing 1","Thing2","Thing3"];
         return(
-        <div>
-        <Header title={title} subTitle={subTitle}/>
-        <Action/>
-        <Option optionText={(new Date()).toLocaleTimeString()} />
-        <Options optionArray={options}/>
-        <AddOption/>
-        </div>
+            <div>
+            <Header title={title} subTitle={subTitle}/>
+            <Action/>
+            <Option optionText={(new Date()).toLocaleTimeString()} />
+            <Options optionArray={options}/>
+            <AddOption/>
+            </div>
         );
     }
 }
