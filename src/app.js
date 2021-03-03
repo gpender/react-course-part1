@@ -13,6 +13,7 @@ class IndecisionAPP extends React.Component{
         super(props);
         this.onDeleteAll = this.onDeleteAll.bind(this);
         this.onPick = this.onPick.bind(this);
+        this.handleAddOption = this.handleAddOption.bind(this);
         this.state={
             options:["Thing 1","Thing 2","Thing 3"]
         };
@@ -28,6 +29,18 @@ class IndecisionAPP extends React.Component{
     onPick(){
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         alert(this.state.options[randomNum]);
+    }
+    handleAddOption(option){
+        if(!option){
+            return 'Enter valid value to add item';
+        }else if(this.state.options.indexOf(option) > -1){
+            return 'Option aready exists';
+        }
+        this.setState((prev)=>{
+            return{
+                options:prev.options.concat([option])
+            };
+        });
     }
     render(){
         const title="Indecision";
@@ -45,7 +58,9 @@ class IndecisionAPP extends React.Component{
                 optionArray={this.state.options}
                 onDeleteAll={this.onDeleteAll}>
             </Options>
-            <AddOption />
+            <AddOption 
+                handleAddOption={this.handleAddOption}
+            />
             </div>
         );
     }
@@ -91,23 +106,26 @@ class Options extends React.Component {
     }
 }
 class AddOption extends React.Component{
+    constructor(props){
+        super(props);
+        this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.state = {
+            error:undefined
+        }
+    }
     onFormSubmit(e){
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
-        if(option){
-alert(option);
-            // app.options.push(option);
-            // e.target.elements.option.value = '';
-            // console.log(option);
-            // console.log(e.target);
-            // render();
-        }
-        
+        const error = this.props.handleAddOption(option);
+        this.setState(()=>{
+            return {error}
+        });
     };
     
     render(){
         return(
             <div>
+            {this.state.error && <p>{this.state.error}</p>}
             <form onSubmit={this.onFormSubmit}>
                 <input name="option" type="text"/>
                 <button>Add Option</button>
