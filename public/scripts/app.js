@@ -48,7 +48,8 @@ var IndecisionAPP = function (_React$Component) {
     }, {
         key: 'onPick',
         value: function onPick() {
-            alert("pick");
+            var randomNum = Math.floor(Math.random() * this.state.options.length);
+            alert(this.state.options[randomNum]);
         }
     }, {
         key: 'render',

@@ -26,7 +26,8 @@ class IndecisionAPP extends React.Component{
         })
     }
     onPick(){
-        alert("pick");
+        const randomNum = Math.floor(Math.random() * this.state.options.length);
+        alert(this.state.options[randomNum]);
     }
     render(){
         const title="Indecision";
