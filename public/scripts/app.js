@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -29,7 +29,7 @@ var Counter = function (_React$Component) {
     }
 
     _createClass(Counter, [{
-        key: 'onAddOne',
+        key: "onAddOne",
         value: function onAddOne() {
             this.setState(function (prevState) {
                 return {
@@ -38,7 +38,7 @@ var Counter = function (_React$Component) {
             });
         }
     }, {
-        key: 'onSubtractOne',
+        key: "onSubtractOne",
         value: function onSubtractOne() {
             this.setState(function (prevState) {
                 return {
@@ -47,7 +47,7 @@ var Counter = function (_React$Component) {
             });
         }
     }, {
-        key: 'onReset',
+        key: "onReset",
         value: function onReset() {
             this.setState(function () {
                 return {
@@ -56,31 +56,31 @@ var Counter = function (_React$Component) {
             });
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
+                "div",
                 null,
                 React.createElement(
-                    'h1',
+                    "h1",
                     null,
-                    'Count: ',
+                    "Count: ",
                     this.state.count
                 ),
                 React.createElement(
-                    'button',
+                    "button",
                     { onClick: this.onAddOne },
-                    '+1'
+                    "+1"
                 ),
                 React.createElement(
-                    'button',
+                    "button",
                     { onClick: this.onSubtractOne },
-                    '-1'
+                    "-1"
                 ),
                 React.createElement(
-                    'button',
+                    "button",
                     { onClick: this.onReset },
-                    'Reset'
+                    "Reset"
                 )
             );
         }
@@ -92,4 +92,4 @@ var Counter = function (_React$Component) {
 Counter.defaultProps = {
     count: 10
 };
-ReactDOM.render(React.createElement(Counter, { count: '99' }), app);
+ReactDOM.render(React.createElement(Counter, { count: 99 }), app);
