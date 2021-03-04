@@ -7,7 +7,8 @@ class IndecisionAPP extends React.Component{
         this.onPick = this.onPick.bind(this);
         this.handleAddOption = this.handleAddOption.bind(this);
         this.state={
-            options:["Thing 1","Thing 2","Thing 3"]
+            options:this.props.options
+            //options:["Thing 1","Thing 2","Thing 3"]
         };
     } 
     //handle delete all
@@ -40,7 +41,7 @@ class IndecisionAPP extends React.Component{
         //const options=["Thing 1","Thing2","Thing3"];
         return(
             <div>
-            <Header title={title} subTitle={subTitle}/>
+            <Header subTitle={subTitle}/>
             <Action 
                 hasOptions={this.state.options.length > 0}
                 onPick={this.onPick}>
@@ -57,14 +58,20 @@ class IndecisionAPP extends React.Component{
         );
     }
 }
+IndecisionAPP.defaultProps={
+        options:["Thing 1","Thing 2","Thing 3"]
+}
 const Header =(props) => {
         return (
             <div>
                 <h1>{props.title}</h1>
-                <h2>{props.subTitle}</h2>
+                {props.subTitle && <h2>{props.subTitle}</h2>}
             </div>
         )
     };
+    Header.defaultProps={
+        title:'Some default'
+    }
 // class Header extends React.Component {
 //     render(){
 //         return (
@@ -180,7 +187,7 @@ const Option = (props)=>{
 
 //ReactDOM.render(jsx, document.getElementById('app'));
 function render(){
-    ReactDOM.render(<IndecisionAPP/>, document.getElementById('app'));
+    ReactDOM.render(<IndecisionAPP options={['one','two']}/>, document.getElementById('app'));
 }
 render();
 setInterval(render,1000);
