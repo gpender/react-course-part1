@@ -1,12 +1,4 @@
-const obj={
-    name:'guggy',
-    getName(){
-        return this.name;
-    }
-}
-//console.log(obj.getName());
-const getName = obj.getName.bind({name:'guythh'});
-console.log(getName());
+// stateless functional component
 
 class IndecisionAPP extends React.Component{
     constructor(props){
@@ -65,46 +57,73 @@ class IndecisionAPP extends React.Component{
         );
     }
 }
-
-class Header extends React.Component {
-    render(){
+const Header =(props) => {
         return (
             <div>
-                <h1>{this.props.title}</h1>
-                <h2>{this.props.subTitle}</h2>
+                <h1>{props.title}</h1>
+                <h2>{props.subTitle}</h2>
             </div>
         )
-    }
-}
-
-class Action extends React.Component{
-    render(){
+    };
+// class Header extends React.Component {
+//     render(){
+//         return (
+//             <div>
+//                 <h1>{this.props.title}</h1>
+//                 <h2>{this.props.subTitle}</h2>
+//             </div>
+//         )
+//     }
+// }
+const Action =(props)=>{
         return(
             <div>
             <button 
-                disabled={!this.props.hasOptions} 
-                onClick={this.props.onPick}>pick</button>
+                disabled={!props.hasOptions} 
+                onClick={props.onPick}>pick</button>
             </div>
         )
     }
-}
-class Options extends React.Component {
-    constructor(props){
-        super(props);
-    }   
-    render(){
+// class Action extends React.Component{
+//     render(){
+//         return(
+//             <div>
+//             <button 
+//                 disabled={!this.props.hasOptions} 
+//                 onClick={this.props.onPick}>pick</button>
+//             </div>
+//         )
+//     }
+// }
+const Options = (props)=> {
         return (
             <div>
-            <button onClick={this.props.onDeleteAll}>Remove All</button>
+            <button onClick={props.onDeleteAll}>Remove All</button>
             <ul>
-                {this.props.optionArray.map((option)=>{
+                {props.optionArray.map((option)=>{
                     return <Option key={option} optionText={option}/>;
                 })}
             </ul>
             </div>
         )
-    }
-}
+    };
+// class Options extends React.Component {
+//     constructor(props){
+//         super(props);
+//     }   
+//     render(){
+//         return (
+//             <div>
+//             <button onClick={this.props.onDeleteAll}>Remove All</button>
+//             <ul>
+//                 {this.props.optionArray.map((option)=>{
+//                     return <Option key={option} optionText={option}/>;
+//                 })}
+//             </ul>
+//             </div>
+//         )
+//     }
+// }
 class AddOption extends React.Component{
     constructor(props){
         super(props);
@@ -134,16 +153,30 @@ class AddOption extends React.Component{
         );
     }
 }
-
-class Option extends React.Component{
-    render(){
+const Option = (props)=>{
         return(
             <div>
-                <li style={{color:'red'}}>{this.props.optionText}</li>
+                <li style={{color:'red'}}>{props.optionText}</li>
             </div>
             );
-    }
-}
+    };
+// class Option extends React.Component{
+//     render(){
+//         return(
+//             <div>
+//                 <li style={{color:'red'}}>{this.props.optionText}</li>
+//             </div>
+//             );
+//     }
+// }
+// const User = (props)=>{
+//     return (
+//         <div>
+//             <p>Name: {props.name}</p>
+//             <p>Age: {props.age}</p>
+//         </div>
+//     );
+// };
 
 //ReactDOM.render(jsx, document.getElementById('app'));
 function render(){
@@ -151,3 +184,4 @@ function render(){
 }
 render();
 setInterval(render,1000);
+
