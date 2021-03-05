@@ -6,6 +6,7 @@ class IndecisionAPP extends React.Component{
         this.onDeleteAll = this.onDeleteAll.bind(this);
         this.onPick = this.onPick.bind(this);
         this.handleAddOption = this.handleAddOption.bind(this);
+        this.handleDeleteOption = this.handleDeleteOption.bind(this);
         this.state={
             options:this.props.options
             //options:["Thing 1","Thing 2","Thing 3"]
@@ -13,11 +14,22 @@ class IndecisionAPP extends React.Component{
     } 
     //handle delete all
     onDeleteAll(){
-        this.setState(()=>{
-            return {
-                options:[]
-            }
-        })
+        // this.setState(()=>{
+        //     return {
+        //         options:[]
+        //     }
+        // })
+        this.setState(()=>({
+            options:[]
+        }));
+    }
+    handleDeleteOption(option){
+        this.setState((prevState)=>({
+            options:prevState.options.filter((opt)=>{
+                return opt!==option;
+            })
+        }))
+        console.log(option);
     }
     onPick(){
         const randomNum = Math.floor(Math.random() * this.state.options.length);
@@ -27,13 +39,14 @@ class IndecisionAPP extends React.Component{
         if(!option){
             return 'Enter valid value to add item';
         }else if(this.state.options.indexOf(option) > -1){
-            return 'Option aready exists';
+            return 'Option Aready exists';
         }
-        this.setState((prev)=>{
-            return{
-                options:prev.options.concat([option])
-            };
-        });
+        this.setState((prev)=>({options:prev.options.concat([option])}));
+        // this.setState((prev)=>{
+        //     return {
+        //         options:prev.options.concat([option])
+        //     };
+        // });
     }
     render(){
         const title="Indecision";
@@ -46,10 +59,14 @@ class IndecisionAPP extends React.Component{
                 hasOptions={this.state.options.length > 0}
                 onPick={this.onPick}>
             </Action>
-            <Option optionText={(new Date()).toLocaleTimeString()} />
+            <Option 
+                optionText={(new Date()).toLocaleTimeString()} 
+                handleDeleteOption={this.handleDeleteOption}
+            />
             <Options 
                 optionArray={this.state.options}
-                onDeleteAll={this.onDeleteAll}>
+                onDeleteAll={this.onDeleteAll}
+                handleDeleteOption={this.handleDeleteOption}>
             </Options>
             <AddOption 
                 handleAddOption={this.handleAddOption}
@@ -69,9 +86,9 @@ const Header =(props) => {
             </div>
         )
     };
-    Header.defaultProps={
-        title:'Some default'
-    }
+Header.defaultProps={
+    title:'Some default'
+}
 // class Header extends React.Component {
 //     render(){
 //         return (
@@ -103,12 +120,18 @@ const Action =(props)=>{
 //     }
 // }
 const Options = (props)=> {
+    console.log(`Options ${props.optionArray}`);
         return (
             <div>
             <button onClick={props.onDeleteAll}>Remove All</button>
             <ul>
                 {props.optionArray.map((option)=>{
-                    return <Option key={option} optionText={option}/>;
+                    return (
+                    <Option 
+                        key={option} 
+                        optionText={option}
+                        handleDeleteOption={props.handleDeleteOption}
+                    />)
                 })}
             </ul>
             </div>
@@ -143,9 +166,7 @@ class AddOption extends React.Component{
         e.preventDefault();
         const option = e.target.elements.option.value.trim();
         const error = this.props.handleAddOption(option);
-        this.setState(()=>{
-            return {error}
-        });
+        this.setState(()=>({error}));
     };
     
     render(){
@@ -164,6 +185,11 @@ const Option = (props)=>{
         return(
             <div>
                 <li style={{color:'red'}}>{props.optionText}</li>
+                <button onClick={(e) => {
+                        props.handleDeleteOption(props.optionText);
+                    }}>
+                    Remove
+                </button>
             </div>
             );
     };
@@ -190,5 +216,5 @@ function render(){
     ReactDOM.render(<IndecisionAPP options={['one','two']}/>, document.getElementById('app'));
 }
 render();
-setInterval(render,1000);
+//setInterval(render,1000);
 

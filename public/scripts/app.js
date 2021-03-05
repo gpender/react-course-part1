@@ -21,6 +21,7 @@ var IndecisionAPP = function (_React$Component) {
         _this.onDeleteAll = _this.onDeleteAll.bind(_this);
         _this.onPick = _this.onPick.bind(_this);
         _this.handleAddOption = _this.handleAddOption.bind(_this);
+        _this.handleDeleteOption = _this.handleDeleteOption.bind(_this);
         _this.state = {
             options: _this.props.options
             //options:["Thing 1","Thing 2","Thing 3"]
@@ -33,11 +34,28 @@ var IndecisionAPP = function (_React$Component) {
     _createClass(IndecisionAPP, [{
         key: 'onDeleteAll',
         value: function onDeleteAll() {
+            // this.setState(()=>{
+            //     return {
+            //         options:[]
+            //     }
+            // })
             this.setState(function () {
                 return {
                     options: []
                 };
             });
+        }
+    }, {
+        key: 'handleDeleteOption',
+        value: function handleDeleteOption(option) {
+            this.setState(function (prevState) {
+                return {
+                    options: prevState.options.filter(function (opt) {
+                        return opt !== option;
+                    })
+                };
+            });
+            console.log(option);
         }
     }, {
         key: 'onPick',
@@ -51,13 +69,16 @@ var IndecisionAPP = function (_React$Component) {
             if (!option) {
                 return 'Enter valid value to add item';
             } else if (this.state.options.indexOf(option) > -1) {
-                return 'Option aready exists';
+                return 'Option Aready exists';
             }
             this.setState(function (prev) {
-                return {
-                    options: prev.options.concat([option])
-                };
+                return { options: prev.options.concat([option]) };
             });
+            // this.setState((prev)=>{
+            //     return {
+            //         options:prev.options.concat([option])
+            //     };
+            // });
         }
     }, {
         key: 'render',
@@ -72,10 +93,14 @@ var IndecisionAPP = function (_React$Component) {
                 React.createElement(Action, {
                     hasOptions: this.state.options.length > 0,
                     onPick: this.onPick }),
-                React.createElement(Option, { optionText: new Date().toLocaleTimeString() }),
+                React.createElement(Option, {
+                    optionText: new Date().toLocaleTimeString(),
+                    handleDeleteOption: this.handleDeleteOption
+                }),
                 React.createElement(Options, {
                     optionArray: this.state.options,
-                    onDeleteAll: this.onDeleteAll }),
+                    onDeleteAll: this.onDeleteAll,
+                    handleDeleteOption: this.handleDeleteOption }),
                 React.createElement(AddOption, {
                     handleAddOption: this.handleAddOption
                 })
@@ -142,6 +167,7 @@ Header.defaultProps = {
 //     }
 // }
 var Options = function Options(props) {
+    console.log('Options ' + props.optionArray);
     return React.createElement(
         'div',
         null,
@@ -154,7 +180,11 @@ var Options = function Options(props) {
             'ul',
             null,
             props.optionArray.map(function (option) {
-                return React.createElement(Option, { key: option, optionText: option });
+                return React.createElement(Option, {
+                    key: option,
+                    optionText: option,
+                    handleDeleteOption: props.handleDeleteOption
+                });
             })
         )
     );
@@ -238,6 +268,13 @@ var Option = function Option(props) {
             'li',
             { style: { color: 'red' } },
             props.optionText
+        ),
+        React.createElement(
+            'button',
+            { onClick: function onClick(e) {
+                    props.handleDeleteOption(props.optionText);
+                } },
+            'Remove'
         )
     );
 };
@@ -264,4 +301,4 @@ function render() {
     ReactDOM.render(React.createElement(IndecisionAPP, { options: ['one', 'two'] }), document.getElementById('app'));
 }
 render();
-setInterval(render, 1000);
+//setInterval(render,1000);
