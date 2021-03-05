@@ -24,6 +24,11 @@ class IndecisionAPP extends React.Component{
         }));
     }
     handleDeleteOption(option){
+        this.setState((prevState)=>({
+            options:prevState.options.filter((opt)=>{
+                return opt!==option;
+            })
+        }))
         console.log(option);
     }
     onPick(){
@@ -180,7 +185,11 @@ const Option = (props)=>{
         return(
             <div>
                 <li style={{color:'red'}}>{props.optionText}</li>
-                <button onClick={props.handleDeleteOption} >Remove</button>
+                <button onClick={(e) => {
+                        props.handleDeleteOption(props.optionText);
+                    }}>
+                    Remove
+                </button>
             </div>
             );
     };

@@ -48,6 +48,13 @@ var IndecisionAPP = function (_React$Component) {
     }, {
         key: 'handleDeleteOption',
         value: function handleDeleteOption(option) {
+            this.setState(function (prevState) {
+                return {
+                    options: prevState.options.filter(function (opt) {
+                        return opt !== option;
+                    })
+                };
+            });
             console.log(option);
         }
     }, {
@@ -264,7 +271,9 @@ var Option = function Option(props) {
         ),
         React.createElement(
             'button',
-            { onClick: props.handleDeleteOption },
+            { onClick: function onClick(e) {
+                    props.handleDeleteOption(props.optionText);
+                } },
             'Remove'
         )
     );
