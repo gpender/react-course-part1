@@ -11,3 +11,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects
 
 Javascript concat
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
+
+Javascript filter
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
