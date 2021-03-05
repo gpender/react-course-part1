@@ -28,10 +28,27 @@ var IndecisionAPP = function (_React$Component) {
         };
         return _this;
     }
-    //handle delete all
-
 
     _createClass(IndecisionAPP, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log('componentDidMount');
+            console.log('fetching data');
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps, prevState) {
+            console.log('componentDidUpdate');
+            console.log('saving data');
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            console.log('componentWillUnmount');
+        }
+        //handle delete all
+
+    }, {
         key: 'onDeleteAll',
         value: function onDeleteAll() {
             // this.setState(()=>{
