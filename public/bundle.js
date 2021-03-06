@@ -67,7 +67,7 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: /Users/gpender/Desktop/react-course/indecision-app/src/app.js Unexpected token (82:12)\nYou may need an appropriate loader to handle this file type.\n|         //const options=[\"Thing 1\",\"Thing2\",\"Thing3\"];\n|         return(\n|             <div>\n|             <Header subTitle={subTitle}/>\n|             <Action ");
+console.log('app.js is running!!');
 
 /***/ })
 /******/ ]);
