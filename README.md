@@ -26,3 +26,9 @@ https://webpack.js.org
 
 ![alt text](https://github.com/gpender/react-course/blob/main/WebPackOverview.png?raw=true)
 
+Node.js Path Module
+https://www.w3schools.com/nodejs/ref_path.asp
+
+npm validator: used in branch 29_ImportingNpmModules
+https://www.npmjs.com/package/validator
+
