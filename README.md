@@ -20,3 +20,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 React Lifecycle
 https://reactjs.org/docs/react-component.html
+
+Webpack
+![alt text](https://github.com/gpender/react-course/WebPackOverview.png?raw=true)
