@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const template = React.cloneElement('p',{},'testing');
+const template = <p>Hello from JSX</p>
 
 ReactDOM.render(template, document.getElementById('app'));
