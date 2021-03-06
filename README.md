@@ -1,4 +1,7 @@
 # react-course
+Use yarn and npm for package management
+
+
 
 DOM Elements
 https://reactjs.org/docs/dom-elements.html
