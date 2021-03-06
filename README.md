@@ -22,4 +22,7 @@ React Lifecycle
 https://reactjs.org/docs/react-component.html
 
 Webpack
+https://webpack.js.org
+
 ![alt text](https://github.com/gpender/react-course/blob/main/WebPackOverview.png?raw=true)
+
