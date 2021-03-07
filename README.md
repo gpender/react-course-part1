@@ -36,4 +36,9 @@ Source Mapping provides link to the source code rather than the bundle.js
 Modify webpack.config.js
     devtool:'eval-cheap-module-source-map'
 
+ES6 Class Properties using Babel
+    "plugins":[
+        "transform-class-properties"
+    ]
+
 

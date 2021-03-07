@@ -5,17 +5,9 @@ import Header from './Header';
 import Action from './Action';
 
 class IndecisionAPP extends React.Component{
-    constructor(props){
-        super(props);
-        this.onDeleteAll = this.onDeleteAll.bind(this);
-        this.onPick = this.onPick.bind(this);
-        this.handleAddOption = this.handleAddOption.bind(this);
-        this.handleDeleteOption = this.handleDeleteOption.bind(this);
-        this.state={
-            options:this.props.options
-            //options:["Thing 1","Thing 2","Thing 3"]
-        };
-    } 
+    state = {
+        options:this.props.options
+    }
     componentDidMount(){
         try{
             console.log('componentDidMount');
@@ -43,12 +35,12 @@ class IndecisionAPP extends React.Component{
         console.log('componentWillUnmount');
     }
     //handle delete all
-    onDeleteAll(){
+    onDeleteAll = () => {
         this.setState(()=>({
             options:[]
         }));
     }
-    handleDeleteOption(option){
+    handleDeleteOption = (option) => {
         this.setState((prevState)=>({
             options:prevState.options.filter((opt)=>{
                 return opt!==option;
@@ -56,11 +48,11 @@ class IndecisionAPP extends React.Component{
         }))
         console.log(option);
     }
-    onPick(){
+    onPick = () => {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         alert(this.state.options[randomNum]);
     }
-    handleAddOption(option){
+    handleAddOption = (option) => {
         if(!option){
             return 'Enter valid value to add item';
         }else if(this.state.options.indexOf(option) > -1){
