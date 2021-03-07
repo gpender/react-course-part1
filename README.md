@@ -45,3 +45,9 @@ Passing JSX to React Components
 
 React Modal
 https://www.npmjs.com/package/react-modal
+
+Make Webpack automatically include css files
+https://webpack.js.org/loaders/css-loader/
+
+Styling using SCSS & SASS
+SASS https://sass-lang.com/
