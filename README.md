@@ -32,3 +32,8 @@ https://www.w3schools.com/nodejs/ref_path.asp
 npm validator: used in branch 29_ImportingNpmModules
 https://www.npmjs.com/package/validator
 
+Source Mapping provides link to the source code rather than the bundle.js
+Modify webpack.config.js
+    devtool:'eval-cheap-module-source-map'
+
+
