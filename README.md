@@ -41,4 +41,7 @@ ES6 Class Properties using Babel
         "transform-class-properties"
     ]
 
+Passing JSX to React Components
 
+React Modal
+https://www.npmjs.com/package/react-modal

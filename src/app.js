@@ -2,41 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import IndecisionAPP from './components/IndecisionApp';
 
-// stateless functional component
+ReactDOM.render(<IndecisionAPP/>,document.getElementById('app'));
 
+// const template = (
+//     <div>
+//         <h1>Page Title</h1>
+//         <p>THis is my page</p>
+//     </div>
+// );
 
-IndecisionAPP.defaultProps={
-        options:["Thing 1","Thing 2","Thing 3"]
-}
+// THIS IS HOW TO PASS JSX TO A COMPONENT
 
-function render(){
-    ReactDOM.render(<IndecisionAPP options={['one','two']}/>, document.getElementById('app'));
-}
-render();
-
-class OldSyntax{
-    constructor(){
-        this.name='Mike';
-        this.getGreeting = this.getGreeting.bind(this);
-    }
-    getGreeting(){
-        return `Hi Guy${this.name}`
-    }
-}
-const oldSyntax = new OldSyntax();
-const getGreeting = oldSyntax.getGreeting;
-console.log(oldSyntax.getGreeting());
-console.log(getGreeting());
-
-// -------------
-
-class NewSyntax{
-    name = 'Jan';
-    getGreeting=()=>{
-        return `Hi Guy${this.name}`;
-    }
-}
-const newSyntax = new NewSyntax();
-const getGreeting2 = newSyntax.getGreeting;
-console.log(newSyntax.getGreeting());
-console.log(getGreeting2());
+// const Layout = (props)=>{
+//     return (
+//         <div>
+//         <p>Header</p>
+//         {props.children}
+//         <p>Footer</p>
+//         </div>
+//     )
+// }
+// ReactDOM.render(
+//     (
+//         <Layout>
+//         <div>
+//             <h1>Page Title</h1>
+//             <p>THis is my page</p>
+//         </div>
+//         </Layout>
+//     ), document.getElementById('app'));

@@ -3,10 +3,12 @@ import AddOption from './AddOption';
 import Options from './Options';
 import Header from './Header';
 import Action from './Action';
+import OptionModal from './OptionModal';
 
 class IndecisionAPP extends React.Component{
     state = {
-        options:this.props.options
+        options:[],
+        selectedOption:false
     }
     componentDidMount(){
         try{
@@ -50,7 +52,17 @@ class IndecisionAPP extends React.Component{
     }
     onPick = () => {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
-        alert(this.state.options[randomNum]);
+        const option = this.state.options[randomNum];
+        this.setState(()=>{
+            return{
+            selectedOption:option
+            }
+        })
+        //alert();
+    }
+    onPickOk = () => {
+        console.log('onPickOk');
+        this.setState(()=> ({selectedOption:undefined}));
     }
     handleAddOption = (option) => {
         if(!option){
@@ -67,7 +79,7 @@ class IndecisionAPP extends React.Component{
             <div>
             <Header subTitle={subTitle}/>
             <Action 
-                hasOptions={this.state.options.length > 0}
+                hasOptions={this.state.options && this.state.options.length > 0}
                 onPick={this.onPick}>
             </Action>
             <Options 
@@ -78,11 +90,15 @@ class IndecisionAPP extends React.Component{
             <AddOption 
                 handleAddOption={this.handleAddOption}
             />
+            <OptionModal 
+                selectedOption={this.state.selectedOption}
+                onPickOk={this.onPickOk}
+                /> 
             </div>
-        );
+
+            );
     }
 }
-
 Header.defaultProps={
     title:'Indecision App'
 }
