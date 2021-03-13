@@ -4,7 +4,9 @@ const Option = (props)=>
 (
     <div>
         <li style={{color:'red'}}>{props.optionText}
-            <button onClick={(e) => {
+            <button
+                className='button button--link' 
+                onClick={(e) => {
                     props.handleDeleteOption(props.optionText);
                 }}>
                 Remove
