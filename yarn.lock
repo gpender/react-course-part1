@@ -4071,7 +4071,7 @@
     "util" "^0.11.0"
     "vm-browserify" "^1.0.1"
 
-"node-sass@^4.0.0":
+"node-sass@^4.0.0", "node-sass@^4.14.1":
   "integrity" "sha512-sjCuOlvGyCJS40R8BscF5vhVlQjNN069NtQ1gSxyK1u9iqvn6tf7O1R4GNowVZfiZUCRt5MmMs1xd+4V/7Yr0g=="
   "resolved" "https://registry.npmjs.org/node-sass/-/node-sass-4.14.1.tgz"
   "version" "4.14.1"
@@ -4144,6 +4144,11 @@
     "prepend-http" "^1.0.0"
     "query-string" "^4.1.0"
     "sort-keys" "^1.0.0"
+
+"normalize.css@^7.0.0":
+  "integrity" "sha1-q/sd2CRwZ04DIrU86xqvQSk45L8="
+  "resolved" "https://registry.npmjs.org/normalize.css/-/normalize.css-7.0.0.tgz"
+  "version" "7.0.0"
 
 "npmlog@^4.0.0", "npmlog@0 || 1 || 2 || 3 || 4":
   "integrity" "sha512-2uUqazuKlTaSI/dC8AzicUck7+IrEaOnN/e0jd3Xtt1KcGpwx30v50mL7oPyr/h9bL3E4aZccVwpwP+5W9Vjkg=="
