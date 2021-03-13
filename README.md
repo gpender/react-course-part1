@@ -51,3 +51,6 @@ https://webpack.js.org/loaders/css-loader/
 
 Styling using SCSS & SASS
 SASS https://sass-lang.com/
+
+SASS Functions (eg: darken)
+https://sass-lang.com/documentation/values/functions
